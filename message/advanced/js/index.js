@@ -1,5 +1,5 @@
-$('.chat[data-chat=person2]').addClass('active-chat');
-$('.person[data-chat=person2]').addClass('active');
+//$('.chat[data-chat=person2]').addClass('active-chat');
+//$('.person[data-chat=person2]').addClass('active');
 
 var applozicUI = new ApplozicUI();
 
@@ -7,14 +7,15 @@ $('body').on('mousedown', '.left .person', function(event) {
     if ($(this).hasClass('.active')) {
         return false;
     } else {
-        var findChat = $(this).attr('data-chat');
+        var findChat = $(this).attr('data-mck-id');
+        var group = $(this).attr('data-isgroup');
         var personName = $(this).find('.name').text();
         $('.right .top .name').html(personName);
         $('.chat').removeClass('active-chat');
         $('.left .person').removeClass('active');
         $(this).addClass('active');
-        $('.chat[data-chat ="'+findChat+'"]').addClass('active-chat');
-        applozicUI.loadConversation(findChat);
+        $('.chat[data-mck-id ="'+findChat+'"]').addClass('active-chat');
+        applozicUI.loadConversation(findChat, group);
     }
 });
 
@@ -23,11 +24,11 @@ function ApplozicUI() {
   var _this = this;
   var chatTemplate = '<div class="bubble ${youMeExpr}">${msgTextExpr}</div>';
 
-  _this.loadConversation = function(contactId) {
+  _this.loadConversation = function(channelId, isGroup) {
       $applozic.fn.applozic('messageList',
         {
-          'id': contactId,
-          'isGroup': false,
+          'id': channelId,
+          'isGroup': isGroup,
           'callback': function(response) {
             //console.log(response);
             var messages = response.messages;
@@ -37,7 +38,7 @@ function ApplozicUI() {
                 chats += chatTemplate.replace("${youMeExpr}", (message.type == 'outbox' ? "you" : "me"))
                   .replace("${msgTextExpr}", message.message);
               }
-              $(".chat[data-chat='" + contactId + "']").append(chats);
+              $(".chat[data-mck-id='" + channelId + "']").append(chats);
           }
         });
   }
