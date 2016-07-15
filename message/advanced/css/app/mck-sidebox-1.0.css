@@ -36,7 +36,7 @@
     box-shadow: none !important;
     border-radius: 0 !important;
     line-height: 18px;
-    min-width: 310px;
+    min-width: 620px;
 }
 
 .mck-box .mck-row {
@@ -456,7 +456,7 @@
 }
 
 .mck-sidebox.fade.in {
-    width: 310px;
+    width: 620px;
 }
 
 .mck-box .mck-box-backdrop.in {
@@ -465,7 +465,7 @@
 }
 
 .mck-sidebox .mck-box-backdrop.in {
-    width: 310px;
+    width: 620px;
     right: 0;
     left: auto;
 }
@@ -2690,13 +2690,13 @@ mck-sidebox .mck-dropdown-menu>li>a:focus, .mck-sidebox .mck-group-member-list .
     height: 16px;
 }
 
-@media ( min-width : 310px) {
+@media ( min-width : 620px) {
     .mck-sidebox .mck-box-sm, .mck-box .mck-box-md {
-        width: 300px;
+        width: 600px;
     }
     .mck-box-dialog {
-        width: 600px;
-        margin: 30px auto;
+        width: 1200px;
+        margin: 60px auto;
     }
     .mck-box  .blk-lg-1, .mck-box  .blk-lg-10, .mck-box  .blk-lg-11,
     .mck-box  .blk-lg-12, .mck-box  .blk-lg-2, .mck-box  .blk-lg-3,
@@ -2798,9 +2798,16 @@ mck-sidebox .mck-dropdown-menu>li>a:focus, .mck-sidebox .mck-group-member-list .
 
 @media ( min-width : 510px) {
     .mck-box .mck-box-md {
-        width: 500px;
+        width: 1000px;
     }
     .mck-box .mck-box-sm {
-        width: 300px;
+        width: 600px;
     }
+}
+
+.message-send-container {
+  width: 100%;
+  display: table-row;
+  position: absolute;
+  bottom: 12px;
 }
