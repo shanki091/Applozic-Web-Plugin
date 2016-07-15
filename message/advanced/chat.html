@@ -41,7 +41,7 @@
                   </li>
               </ul>
           </div>
-          <div class="right">
+          <div id="conversation-section" class="right">
               <div class="top"><span>To: <span class="name">Dog Woofson</span></span></div>
               <div class="chat" data-chat="person1">
                   <div class="conversation-start">
@@ -78,90 +78,6 @@
                   </div>
                   <div class="bubble you">
                       I've forgotten how it felt before
-                  </div>
-              </div>
-              <div class="chat" data-chat="person3">
-                  <div class="conversation-start">
-                      <span>Today, 3:38 AM</span>
-                  </div>
-                  <div class="bubble you">
-                      Hey human!
-                  </div>
-                  <div class="bubble you">
-                      Umm... Someone took a shit in the hallway.
-                  </div>
-                  <div class="bubble me">
-                      ... what.
-                  </div>
-                  <div class="bubble me">
-                      Are you serious?
-                  </div>
-                  <div class="bubble you">
-                      I mean...
-                  </div>
-                  <div class="bubble you">
-                      It’s not that bad...
-                  </div>
-                  <div class="bubble you">
-                      But we’re probably gonna need a new carpet.
-                  </div>
-              </div>
-              <div class="chat" data-chat="person4">
-                  <div class="conversation-start">
-                      <span>Yesterday, 4:20 PM</span>
-                  </div>
-                  <div class="bubble me">
-                      Hey human!
-                  </div>
-                  <div class="bubble me">
-                      Umm... Someone took a shit in the hallway.
-                  </div>
-                  <div class="bubble you">
-                      ... what.
-                  </div>
-                  <div class="bubble you">
-                      Are you serious?
-                  </div>
-                  <div class="bubble me">
-                      I mean...
-                  </div>
-                  <div class="bubble me">
-                      It’s not that bad...
-                  </div>
-              </div>
-              <div class="chat" data-chat="person5">
-                  <div class="conversation-start">
-                      <span>Today, 6:28 AM</span>
-                  </div>
-                  <div class="bubble you">
-                      Wasup
-                  </div>
-                  <div class="bubble you">
-                      Wasup
-                  </div>
-                  <div class="bubble you">
-                      Wasup for the third time like is <br />you blind bitch
-                  </div>
-
-              </div>
-              <div class="chat" data-chat="person6">
-                  <div class="conversation-start">
-                      <span>Monday, 1:27 PM</span>
-                  </div>
-                  <div class="bubble you">
-                      So, how's your new phone?
-                  </div>
-                  <div class="bubble you">
-                      You finally have a smartphone :D
-                  </div>
-                  <div class="bubble me">
-                      Drake?
-                  </div>
-                  <div class="bubble me">
-                      Why aren't you answering?
-                  </div>
-                  <div class="bubble you">
-                      howdoyoudoaspace
                   </div>
               </div>
               <div class="write">
@@ -228,6 +144,7 @@
             function onInitialize(status) {
                 if (status === 'success') {
                     //write your logic exectute after plugin initialize.
+                    $applozic.fn.applozic('loadTab', '');
                 }
             }
             $(document).ready(function () {
@@ -243,13 +160,7 @@
                     maxAttachmentSize: 25, //max attachment size in MB
                     desktopNotification: true,
                     locShare: true,
-                    googleApiKey: "AIzaSyDKfWHzu9X7Z2hByeW4RRFJrD9SizOzZt4",
-                    onInit: function(response) {
-                      if (response == "success") {
-                        console.log("launching tab");
-                        $applozic.fn.applozic('loadTab', '');
-                      }
-                    }
+                    googleApiKey: "AIzaSyDKfWHzu9X7Z2hByeW4RRFJrD9SizOzZt4"
                 });
 
                 // var contactjson = {"contacts": [{"userId": "user1", "displayName": "Devashish", "imageLink": "https://www.applozic.com/resources/images/applozic_icon.png"}, {"userId": "user2", "displayName": "Adarsh", "imageLink": "https://www.applozic.com/resources/images/applozic_icon.png"}, {"userId": "user3", "displayName": "Shanki", "imageLink": "https://www.applozic.com/resources/images/applozic_icon.png"}]};

@@ -1,7 +1,7 @@
 $('.chat[data-chat=person2]').addClass('active-chat');
 $('.person[data-chat=person2]').addClass('active');
 
-$('.left .person').mousedown(function(){
+$('body').on('mousedown', '.left .person', function(event) {
     if ($(this).hasClass('.active')) {
         return false;
     } else {
@@ -11,6 +11,7 @@ $('.left .person').mousedown(function(){
         $('.chat').removeClass('active-chat');
         $('.left .person').removeClass('active');
         $(this).addClass('active');
-        $('.chat[data-chat = '+findChat+']').addClass('active-chat');
+        //$('.chat[data-chat = '+findChat+']').addClass('active-chat');
+        //$applozic.fn.applozic('loadTab', findChat);
     }
 });
