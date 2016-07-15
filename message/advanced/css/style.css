@@ -40,6 +40,7 @@ body {
   height: 100%;
   border: 1px solid #e6e6e6;
   background-color: #fff;
+  overflow: auto;
 }
 .container .left .top {
   position: relative;
@@ -136,6 +137,13 @@ body {
   color: #1a1a1a;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 600;
+  text-overflow: ellipsis;
+  display: inline-block;
+  white-space: nowrap;
+
+
+  overflow: hidden;
+  width: 60%;
 }
 .container .left .people .person .time {
   font-size: 14px;

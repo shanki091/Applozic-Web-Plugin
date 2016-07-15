@@ -27,59 +27,43 @@
                   <a href="javascript:;" class="search"></a>
               </div>
               <ul id="mck-contact-list" class="people">
+                  <!--
                   <li id="li-user-nitin" class="person nitin" data-chat="person1" data-msg-time="1468413476857">
                       <img src="http://s13.postimg.org/ih41k9tqr/img1.jpg" alt="" />
                       <span class="name">Nitin</span>
                       <span class="time">2:09 PM</span>
                       <span class="preview">I was wondering...</span>
                   </li>
-                  <li class="person" data-chat="person2">
-                      <img src="http://s3.postimg.org/yf86x7z1r/img2.jpg" alt="" />
-                      <span class="name">Dog Woofson</span>
-                      <span class="time">1:44 PM</span>
-                      <span class="preview">I've forgotten how it felt before</span>
-                  </li>
+                -->
               </ul>
           </div>
-          <div id="conversation-section" class="right">
-              <div class="top"><span>To: <span class="name">Dog Woofson</span></span></div>
-              <div class="chat" data-chat="person1">
-                  <div class="conversation-start">
-                      <span>Today, 6:48 AM</span>
-                  </div>
-                  <div class="bubble you">
-                      Hello,
-                  </div>
-                  <div class="bubble you">
-                      it's me.
-                  </div>
-                  <div class="bubble you">
-                      I was wondering...
-                  </div>
+          <div class="right">
+              <div class="top"><span>To: <span class="name"></span></span></div>
+
+              <div id="conversation-section">
+                <!--
+                <div class="chat" data-chat="person1">
+                    <div class="conversation-start">
+                        <span>Today, 6:48 AM</span>
+                    </div>
+                    <div class="bubble you">
+                        Hello,
+                    </div>
+                    <div class="bubble me">
+                        it's me.
+                    </div>
+                </div>
+                <div class="chat" data-chat="person2">
+                    <div class="conversation-start">
+                        <span>Today, 5:38 PM</span>
+                    </div>
+                    <div class="bubble you">
+                        I've forgotten how it felt before
+                    </div>
+                </div>
+              -->
               </div>
-              <div class="chat" data-chat="person2">
-                  <div class="conversation-start">
-                      <span>Today, 5:38 PM</span>
-                  </div>
-                  <div class="bubble you">
-                      Hello, can you hear me?
-                  </div>
-                  <div class="bubble you">
-                      I'm in California dreaming
-                  </div>
-                  <div class="bubble me">
-                      ... about who we used to be.
-                  </div>
-                  <div class="bubble me">
-                      Are you serious?
-                  </div>
-                  <div class="bubble you">
-                      When we were younger and free...
-                  </div>
-                  <div class="bubble you">
-                      I've forgotten how it felt before
-                  </div>
-              </div>
+
               <div class="write">
                 <!-- Create message send form -->
                 <form id="mck-msg-form" class="vertical mck-msg-form">
@@ -93,6 +77,9 @@
           </div>
       </div>
   </div>
+
+<!-- Dummy div as js is dependent on mck-sidebox -->
+  <div id ="mck-sidebox"></div>
 
 
         <script type="text/javascript" src="js/mck-ui-plugins.min.js"></script>
@@ -149,7 +136,7 @@
             }
             $(document).ready(function () {
                 //Function to initialize plugin
-                $applozic.fn.applozic({userId: 'customer-1', userName: 'Customer1', appId: 'applozic-sample-app',
+                $applozic.fn.applozic({userId: 'devashish@applozic.com', userName: 'Devashish', appId: 'applozic-sample-app',
                     ojq: $original,
                     obsm: oModal,
                     notificationIconLink: "https://www.applozic.com/resources/images/applozic_icon.png",
