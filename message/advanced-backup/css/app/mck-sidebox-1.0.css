@@ -1503,7 +1503,6 @@ mck-sidebox .mck-dropdown-menu>li>a:focus, .mck-sidebox .mck-group-member-list .
     padding: 0;
 }
 
-/*
 .mck-alpha-contact-image {
     text-align: center;
     height: 50px;
@@ -1512,7 +1511,6 @@ mck-sidebox .mck-dropdown-menu>li>a:focus, .mck-sidebox .mck-group-member-list .
     font-size: 30px;
     position: relative;
 }
-*/
 
 .mck-contact-list .mck-alpha-contact-image {
     border-radius: 110px;
