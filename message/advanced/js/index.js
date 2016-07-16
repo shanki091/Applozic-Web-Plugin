@@ -3,12 +3,13 @@
 
 var applozicUI = new ApplozicUI();
 
+
 $('body').on('mousedown', '.left .person', function(event) {
     if ($(this).hasClass('.active')) {
         return false;
     } else {
-        var findChat = $(this).attr('data-mck-id');
-        var group = $(this).attr('data-isgroup');
+        var findChat = $(this).data('mck-id');
+        var group = $(this).data('isgroup');
         var personName = $(this).find('.name').text();
         $('.right .top .name').html(personName);
         $('.chat').removeClass('active-chat');

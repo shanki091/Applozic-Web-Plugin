@@ -1220,10 +1220,12 @@ var $applozic = jQuery.noConflict(true);
                     }
                     mckMessageService.getConversationId(params);
                 });
-                $applozic(d).on("click", "." + MCK_LAUNCHER + ",.mck-conversation-tab-link, .mck-contact-list ." + MCK_LAUNCHER, function (e) {
+                $applozic(d).on("click", ".left .person,." + MCK_LAUNCHER + ",.mck-conversation-tab-link, .mck-contact-list ." + MCK_LAUNCHER, function (e) {
                     e.preventDefault();
+
                     var $this = $applozic(this);
                     var tabId = $this.data("mck-id");
+                    console.log(tabId);
                     tabId = (typeof tabId !== "undefined" && tabId !== "") ? tabId.toString() : "";
                     var userName = $this.data("mck-name");
                     userName = (typeof userName !== "undefined" && userName !== "") ? userName.toString() : "";
@@ -1232,6 +1234,16 @@ var $applozic = jQuery.noConflict(true);
                     var isGroup = ($this.data("isgroup") === true);
                     var conversationId = $this.data("mck-conversationid");
                     conversationId = (typeof conversationId !== "undefined" && conversationId !== "") ? conversationId.toString() : "";
+
+
+                    var personName = $(this).find('.name').text();
+                    $('.right .top .name').html(personName);
+                    $('.chat').removeClass('active-chat');
+                    $('.left .person').removeClass('active');
+                    $(this).addClass('active');
+                    $('.chat[data-mck-id ="'+tabId+'"]').addClass('active-chat');
+
+
                     if (topicId && !conversationId) {
                         var topicStatus = $applozic(this).data("mck-topic-status");
                         if (topicStatus) {
@@ -3425,10 +3437,10 @@ var $applozic = jQuery.noConflict(true);
                 var latestCreatedAtTime = $applozic('#' + $listId + ' li:nth-child(1)').data('msg-time');
                 if (typeof latestCreatedAtTime === "undefined" || (message ? message.createdAtTime : "") > latestCreatedAtTime || ($listId.indexOf("search") !== -1 && prepend)) {
                     $applozic.tmpl("contactTemplate", contactList).prependTo('#' + $listId);
-                    $applozic.tmpl("conversationTemplate", contactList).prependTo('#conversation-section');
+                    $applozic.tmpl("conversationTemplate", contactList).prependTo('#conversation-section .mck-message-inner');
                 } else {
                     $applozic.tmpl("contactTemplate", contactList).appendTo('#' + $listId);
-                    $applozic.tmpl("conversationTemplate", contactList).appendTo('#conversation-section');
+                    $applozic.tmpl("conversationTemplate", contactList).appendTo('#conversation-section .mck-message-inner');
                 }
                 var $textMessage = $applozic("#li-" + contHtmlExpr + " .msgTextExpr");
                 (typeof emoji_template === 'object') ? $textMessage.append(emoji_template) : $textMessage.html(emoji_template);
