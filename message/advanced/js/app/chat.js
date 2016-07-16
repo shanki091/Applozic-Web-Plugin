@@ -4107,7 +4107,7 @@ var $applozic = jQuery.noConflict(true);
                     global: false,
                     success: function (data) {
                         $mck_search_loading.removeClass('vis').addClass('n-vis');
-                        if ($mck_sidebox_search.hasClass('vis')) {
+                        if ($mck_sidebox_search.length == 0 || $mck_sidebox_search.hasClass('vis')) {
                             if (data === null || data.length === 0) {
                                 $mck_search_inner.html('<div class="mck-no-data-text mck-text-muted">No contacts yet!</div>');
                                 mckMessageLayout.initSearchAutoType();

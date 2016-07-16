@@ -23,8 +23,9 @@
       <div class="container">
           <div class="left">
               <div class="top">
-                  <input type="text" />
-                  <a href="javascript:;" class="search"></a>
+                  <input type="text" id="mck-search" data-provide="typeahead" placeholder="Search..." autofocus />
+
+                  <a href="javascript:;" id="mck-msg-new" class="search"></a>
               </div>
               <ul id="mck-contact-list" class="people">
                   <!--
@@ -169,20 +170,20 @@
                 //console.log(userId);
             }
             //Callback Function to return display name by userId
-            function displayName(userId) {
+          /*  function displayName(userId) {
                 //Todo: replace this with users display name
                 var contact = contacts[userId];   // contacts sample given above
                 if (typeof contact !== 'undefined') {
                     return contact.displayName;
                 }
-            }
+            }*/
             //Callback Function to return contact image url by userId
-            function contactImageSrc(userId) {
+          /*  function contactImageSrc(userId) {
                 var contact = contacts[userId]; // contacts sample given above
                 if (typeof contact !== 'undefined') {
                     return contact.imageLink;
                 }
-            }
+            }*/
             //callback function execute after plugin initialize.
             function onInitialize(status) {
                 if (status === 'success') {
@@ -197,8 +198,6 @@
                     obsm: oModal,
                     notificationIconLink: "https://www.applozic.com/resources/images/applozic_icon.png",
                     readConversation: readMessage, // readMessage function defined above
-                    contactDisplayName: displayName, // displayName function defined above
-                    contactDisplayImage: contactImageSrc, // contactImageSrc function defined above
                     onInit: onInitialize, //callback function execute on plugin initialize
                     maxAttachmentSize: 25, //max attachment size in MB
                     desktopNotification: true,
