@@ -71,23 +71,64 @@
               <div class="write">
                 <!-- Create message send form -->
 
-                <form id="mck-msg-form" class="vertical mck-msg-form">
-                  <div class="mck-form-group n-vis">
-                      <label class="sr-only placeholder-text control-label" for="mck-msg-to">To:</label>
-                      <input class="mck-form-cntrl" id="mck-msg-to" name="mck-msg-to" placeholder="To" required>
-                  </div>
-                  <p id="mck-msg-error" class="mck-sidebox-error n-vis"></p>
-                  <div id="mck-msg-response" class="mck-box-response n-vis">
-                      <div id="mck-response-text" class="response-text"></div>
-                  </div>
+                <div id="mck-file-menu" class="mck-file-menu">
+                    <div class="mck-row">
+                        <div class="blk-lg-6 mck-left mck-pt10">
+                            <a id="mck-file-up" class="mck-btn-text-panel mck-file-upload" href="#">
+                                <div class="mck-menu-icon">
+                                    <span class="mck-icon-photo"></span>
+                                </div>
+                                <p class="mck-truncate" title="File &amp; Photos">Files &amp; Photos</p>
+                            </a>
+                        </div>
+                        <div class="blk-lg-6 mck-pt10">
+                            <a id="mck-btn-loc" href="#" class="mck-btn-loc">
+                                <div class="mck-menu-icon">
+                                    <span class="mck-icon-marker-blue"></span>
+                                </div>
+                                <p class="mck-truncate" title="Location">Location</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div id="mck-sidebox-ft" class="mck-box-ft">
+                    <div class="mck-box-form n-vis mck-right">
+                        <p id="mck-msg-error" class="mck-sidebox-error n-vis"></p>
+                        <div id="mck-msg-response" class="mck-box-response n-vis">
+                            <div id="mck-response-text" class="response-text"></div>
+                        </div>
+                        <form id="mck-msg-form" class="vertical mck-msg-form">
 
-                </form>
+                          <div class="mck-form-group n-vis">
+                              <label class="sr-only placeholder-text control-label" for="mck-msg-to">To:</label>
+                              <input class="mck-form-cntrl" id="mck-msg-to" name="mck-msg-to" placeholder="To" required>
+                          </div>
 
-                  <div id="mck-file-box" class="n-vis"></div>
+                          <input id="mck-file-input" class="mck-file-input n-vis" type="file" name="files[]">
+
+                          <div id="mck-file-box" class="n-vis"></div>
+                          <a href="#" type="button" id="mck-btn-attach" class="write-link attach n-vis mck-btn-text-panel mck-btn-attach" aria-expanded="true" title="Attach File">
+                          </a>
+                          <a href="#" id="mck-file-up2" type="button" class="write-link attach n-vis mck-file-upload mck-btn-text-panel" title="Attach File">
+                          </a>
+
+                          <span id="mck-text-box" contenteditable="true" class="mck-text-box mck-text required"></span>
+
+                          <a href="#" type="button" id="mck-btn-smiley" class="write-link smiley mck-btn-smiley mck-btn-text-panel" title="Smiley"></a>
+
+                          <a href="#" type="submit" id="mck-msg-sbmt" class="write-link send mck-btn-text-panel" title="Send Message"></a>
+
+
+                        </form>
+                    </div>
+                </div>
+
+                <!--
                   <a href="javascript:;" class="write-link attach"></a>
                   <input id="mck-text-box" type="text" />
-                  <a href="javascript:;" class="write-link smiley"></a>
+                  <a href="javascript:;" id = "mck-btn-smiley" class="write-link smiley"></a>
                   <a href="javascript:;" class="write-link send"></a>
+                -->
               </div>
           </div>
       </div>

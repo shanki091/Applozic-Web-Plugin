@@ -281,12 +281,12 @@ body {
   width: calc(100% - 58px);
   border-radius: 5px;
 }
-.container .right .write input {
+.container .right .write input, .container .right .write .mck-text-box {
   font-size: 16px;
   float: left;
   width: 347px;
   height: 40px;
-  padding: 0 10px;
+  padding: 10px;
   color: #1a1a1a;
   border: 0;
   outline: none;
@@ -334,6 +334,7 @@ body {
   padding: 13px 14px;
   vertical-align: top;
   border-radius: 5px;
+  margin-bottom: 16px;
 }
 .container .right .bubble:before {
   position: absolute;
