@@ -2871,6 +2871,11 @@ var $applozic = jQuery.noConflict(true);
                     displayName = "";
                     nameTextExpr = "";
                 }
+
+                var tabId = msg.to;
+                if (msg.groupId) {
+                  tabId = msg.groupId;
+                }
                 var msgFeatExpr = "n-vis";
                 var fileName = "";
                 var fileSize = "";
@@ -2906,7 +2911,7 @@ var $applozic = jQuery.noConflict(true);
                         fileSizeExpr: fileSize
                     }];
                 append ? $applozic.tmpl("messageTemplate", msgList).appendTo("#mck-message-cell .mck-message-inner-right") : $applozic.tmpl("messageTemplate", msgList).prependTo("#mck-message-cell .mck-message-inner-right");
-                append ? $applozic.tmpl("messageTemplate", msgList).appendTo(".mck-message-inner[data-mck-id='" + msg.to + "']") : $applozic.tmpl("messageTemplate", msgList).prependTo(".mck-message-inner[data-mck-id='" + msg.to + "']");
+                append ? $applozic.tmpl("messageTemplate", msgList).appendTo(".mck-message-inner[data-mck-id='" + tabId + "']") : $applozic.tmpl("messageTemplate", msgList).prependTo(".mck-message-inner[data-mck-id='" + tabId + "']");
 
                 var emoji_template = "";
                 if (msg.message) {

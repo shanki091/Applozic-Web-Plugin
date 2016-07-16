@@ -2104,7 +2104,7 @@ mck-sidebox .mck-dropdown-menu>li>a:focus, .mck-sidebox .mck-group-member-list .
 .mck-group-inner .mck-msg-left .mck-msg-box {
     padding: 4px 8px;
     color: #333;
-    background: #fff;
+    /*background: #fff;*/
 }
 
 .mck-group-inner .mck-msg-left .mck-msg-box:after {
