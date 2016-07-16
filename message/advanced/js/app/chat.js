@@ -1611,7 +1611,6 @@ var $applozic = jQuery.noConflict(true);
                     }
                 }
 
-                $mck_msg_inner = mckMessageLayout.getMckMessageInner();
                 var isBlocked = $mck_msg_inner.data('blocked');
                 if (isBlocked) {
                     mckUserUtils.toggleBlockUser(tabId, true);
@@ -1724,7 +1723,7 @@ var $applozic = jQuery.noConflict(true);
                         userStatus: 4
                     };
                 }
-                var $mck_msg_div = $applozic("#mck-message-cell .mck-message-inner-right div[name='message']." + randomId);
+                var $mck_msg_div = $applozic("#mck-message-cell div[name='message']." + randomId);
                 $applozic.ajax({
                     type: "POST",
                     url: MCK_BASE_URL + MESSAGE_SEND_URL,
