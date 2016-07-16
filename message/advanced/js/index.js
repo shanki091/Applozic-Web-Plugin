@@ -3,7 +3,7 @@
 
 var applozicUI = new ApplozicUI();
 
-
+/*
 $('body').on('mousedown', '.left .person', function(event) {
     if ($(this).hasClass('.active')) {
         return false;
@@ -18,7 +18,7 @@ $('body').on('mousedown', '.left .person', function(event) {
         $('.chat[data-mck-id ="'+findChat+'"]').addClass('active-chat');
         applozicUI.loadConversation(findChat, group);
     }
-});
+});*/
 
 function ApplozicUI() {
 

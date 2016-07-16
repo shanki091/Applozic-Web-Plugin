@@ -40,9 +40,8 @@
           <div class="right">
               <div class="top"><span>To: <span class="name"></span></span></div>
 
+            <div id="mck-message-cell">
               <div id="conversation-section">
-                <div class="mck-message-inner">
-                </div>
                 <!--
                 <div class="chat" data-mck-id="person1">
                     <div class="conversation-start">
@@ -65,14 +64,27 @@
                 </div>
               -->
               </div>
+            </div>
+
 
               <div class="write">
                 <!-- Create message send form -->
+
                 <form id="mck-msg-form" class="vertical mck-msg-form">
+                  <div class="mck-form-group n-vis">
+                      <label class="sr-only placeholder-text control-label" for="mck-msg-to">To:</label>
+                      <input class="mck-form-cntrl" id="mck-msg-to" name="mck-msg-to" placeholder="To" required>
+                  </div>
+                  <p id="mck-msg-error" class="mck-sidebox-error n-vis"></p>
+                  <div id="mck-msg-response" class="mck-box-response n-vis">
+                      <div id="mck-response-text" class="response-text"></div>
+                  </div>
+
                 </form>
 
+                  <div id="mck-file-box" class="n-vis"></div>
                   <a href="javascript:;" class="write-link attach"></a>
-                  <input type="text" />
+                  <input id="mck-text-box" type="text" />
                   <a href="javascript:;" class="write-link smiley"></a>
                   <a href="javascript:;" class="write-link send"></a>
               </div>
