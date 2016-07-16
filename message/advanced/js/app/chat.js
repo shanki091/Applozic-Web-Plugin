@@ -3798,6 +3798,7 @@ var $applozic = jQuery.noConflict(true);
                 }
             };
             _this.populateMessage = function (messageType, message, notifyUser) {
+                $mck_msg_inner = mckMessageLayout.getMckMessageInner();
                 var tabId = $mck_msg_inner.data('mck-id');
                 var contact = (message.groupId) ? mckGroupLayout.getGroup(message.groupId) : mckMessageLayout.getContact(message.to);
                 if ((typeof tabId === "undefined") || tabId === "") {
@@ -4015,6 +4016,7 @@ var $applozic = jQuery.noConflict(true);
                 });
             };
             _this.toggleBlockUser = function (tabId, isBlocked) {
+               $mck_message_inner = mckMessageLayout.getMckMessageInner();
                 if (isBlocked) {
                     $mck_msg_error.html('You have blocked this user.');
                     $mck_msg_error.removeClass('n-vis').addClass('vis').addClass('mck-no-mb');
@@ -5633,6 +5635,7 @@ var $applozic = jQuery.noConflict(true);
                 }
             };
             _this.connectToSocket = function () {
+                $mck_message_inner = mckMessageLayout.getMckMessageInner();
                 if (!stompClient.connected) {
                     if ($mck_sidebox.css('display') === 'block') {
                         var currTabId = $mck_message_inner.data('mck-id');
@@ -5729,6 +5732,7 @@ var $applozic = jQuery.noConflict(true);
                 }
             };
             _this.onTypingStatus = function (resp) {
+               $mck_message_inner = mckMessageLayout.getMckMessageInner();
                 var message = resp.body;
                 var publisher = message.split(",")[1];
                 var status = Number(message.split(",")[2]);
@@ -5805,6 +5809,7 @@ var $applozic = jQuery.noConflict(true);
                 events.onConnect();
             };
             _this.onMessage = function (obj) {
+               $mck_message_inner = mckMessageLayout.getMckMessageInner();
                 var resp = $applozic.parseJSON(obj.body);
                 var messageType = resp.type;
                 if (messageType === "APPLOZIC_04" || messageType === "MESSAGE_DELIVERED") {
