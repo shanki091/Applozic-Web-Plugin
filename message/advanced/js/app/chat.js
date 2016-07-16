@@ -1594,6 +1594,7 @@ var $applozic = jQuery.noConflict(true);
                 });
             };
             _this.sendMessage = function (messagePxy) {
+                $mck_msg_inner = mckMessageLayout.getMckMessageInner();
                 if (typeof messagePxy !== 'object') {
                     return;
                 }
