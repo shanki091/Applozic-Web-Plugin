@@ -2636,6 +2636,9 @@ var $applozic = jQuery.noConflict(true);
                 $('.left .person').removeClass('active');
 
                 if (params.tabId) {
+                  if ($('.person[data-mck-id ="'+params.tabId+'"]').length == 0) {
+                    _this.updateRecentConversationList(params.isGroup ? mckGroupLayout.getGroup(params.tabId) : _this.fetchContact(params.tabId), undefined, true);
+                  }
                   var displayName = params.isGroup ? mckGroupLayout.getGroupDisplayName(params.tabId) : _this.fetchContact(params.tabId).displayName;
                   $('.right .top .name').html(displayName);
                   $('.person[data-mck-id ="'+params.tabId+'"]').addClass('active');
