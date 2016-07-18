@@ -1021,7 +1021,7 @@ var $applozic = jQuery.noConflict(true);
             var $mck_group_menu_options = $applozic(".mck-group-menu-options");
             var $mck_tab_message_option = $applozic(".mck-tab-message-option");
             var $mck_group_admin_options = $applozic(".mck-group-admin-options");
-            var $mck_msg_inner_left = $applozic("#mck-message-cell .mck-message-inner-left");
+            var $mck_msg_inner_left = $applozic(".mck-message-inner-left");
             var $mck_search_inner = $applozic("#mck-search-cell .mck-message-inner-right");
 
             var $mck_msg_inner;
@@ -1307,9 +1307,11 @@ var $applozic = jQuery.noConflict(true);
                 });
                 $mck_msg_inner = mckMessageLayout.getMckMessageInner();
                 $mck_msg_inner_left.bind('scroll', function () {
+                    console.log("$mck_msg_inner_left.find('.mck-contact-list').length: " + $mck_msg_inner_left.find('.mck-contact-list').length);
                     if ($mck_msg_inner_left.find('.mck-contact-list').length > 0) {
                         if ($mck_msg_inner_left.scrollTop() + $mck_msg_inner_left.innerHeight() >= $mck_msg_inner_left[0].scrollHeight) {
                             var startTime = $mck_msg_inner_left.data('datetime');
+                            console.log(startTime);
                             if (startTime > 0 && !CONTACT_SYNCING) {
                                 mckMessageService.loadMessageList({
                                     'tabId': "",
@@ -2578,7 +2580,7 @@ var $applozic = jQuery.noConflict(true);
             var $mck_typing_box_text = $applozic(".mck-typing-box .name-text");
             var $mck_group_menu_options = $applozic(".mck-group-menu-options");
             var $mck_conversation_header = $applozic("#mck-conversation-header");
-            var $mck_msg_inner_left = $applozic("#mck-messsage-cell .mck-message-inner-left");
+            var $mck_msg_inner_left = $applozic(".mck-message-inner-left");
             var $mck_product_up_key = $applozic(".mck-product-rt-up .mck-product-key");
             var $mck_product_up_value = $applozic(".mck-product-rt-up .mck-product-value");
             var $mck_product_down_key = $applozic(".mck-product-rt-down .mck-product-key");
@@ -4632,7 +4634,7 @@ var $applozic = jQuery.noConflict(true);
             var $mck_group_add_member_box = $applozic("#mck-group-add-member-box");
             var $mck_group_icon = $applozic("#mck-group-icon-box .mck-group-icon");
             var $mck_msg_inner = $applozic("#mck-message-cell .mck-message-inner");
-            var $mck_msg_inner_left = $applozic("#mck-message-cell .mck-message-inner-left");
+            var $mck_msg_inner_left = $applozic(".mck-message-inner-left");
             var $mck_group_title = $applozic("#mck-group-name-sec .mck-group-title");
             var groupContactbox = '<li id="li-${contHtmlExpr}" class="${contIdExpr} mck-li-group-member" data-mck-id="${contIdExpr}" data-alpha="${contFirstAlphaExpr}">' + '<div class="mck-row mck-group-member-info" title="${contNameExpr}">' + '<div class="blk-lg-3">{{html contImgExpr}}</div>' + '<div class="blk-lg-9">' + '<div class="mck-row">' + '<div class="blk-lg-8 mck-cont-name mck-truncate"><strong>${contNameExpr}</strong></div>' + '<div class="blk-lg-4 mck-group-admin-text move-right ${isAdminExpr}"><span>Admin</span></div></div>' + '<div class="mck-row">' + '<div class="blk-lg-10 mck-truncate mck-last-seen-status" title="${contLastSeenExpr}">${contLastSeenExpr}</div>' + '<div class="move-right blk-lg-2 mck-group-admin-options ${enableAdminMenuExpr}">' + '<div class="mck-menu-box n-vis"><div class="mck-dropdown-toggle mck-group-admin-menu-toggle mck-text-center" data-toggle="mckdropdown" aria-expanded="true">' + '<span class="mck-caret"></span></div>' + '<ul id="mck-group-admin-menu" class="mck-dropdown-menu mck-group-admin-menu mck-tab-menu-box menu-right" role="menu">' + '<li class="mck-tab-message-option">' + '<a href="#" class="mck-btn-remove-member menu-item" title="Remove member">Remove member</a>' + '</li></ul></div></div>' + '</div></div></div></li>';
             var groupSearchContact = '<li id="li-${contHtmlExpr}" class="${contIdExpr} mck-li-group-member" data-mck-id="${contIdExpr}">' + '<a class="mck-add-to-group" href="#" data-mck-id="${contIdExpr}">' + '<div class="mck-row" title="${contNameExpr}">' + '<div class="blk-lg-3">{{html contImgExpr}}</div>' + '<div class="blk-lg-9">' + '<div class="mck-row"><div class="blk-lg-12 mck-cont-name mck-truncate"><strong>${contNameExpr}</strong></div></div>' + '<div class="mck-row"><div class="blk-lg-12 mck-truncate mck-last-seen-status" title="${contLastSeenExpr}">${contLastSeenExpr}</div></div>' + '</div></div></a></li>';
