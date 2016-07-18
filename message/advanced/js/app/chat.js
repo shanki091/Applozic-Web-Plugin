@@ -1237,12 +1237,14 @@ var $applozic = jQuery.noConflict(true);
                     conversationId = (typeof conversationId !== "undefined" && conversationId !== "") ? conversationId.toString() : "";
 
 
-                    var personName = $(this).find('.name').text();
+                    //Todo: if contact is not present in the list then add it first.
+                    console.log("tabId: " + tabId);
+                    /*var personName = $(this).find('.name').text();
                     $('.right .top .name').html(personName);
                     $('.chat').removeClass('active-chat');
                     $('.left .person').removeClass('active');
                     $(this).addClass('active');
-                    $('.chat[data-mck-id ="'+tabId+'"]').addClass('active-chat');
+                    $('.chat[data-mck-id ="'+tabId+'"]').addClass('active-chat');*/
 
 
                     if (topicId && !conversationId) {
@@ -2624,6 +2626,17 @@ var $applozic = jQuery.noConflict(true);
                 }
             };
             _this.loadTab = function (params, callback) {
+
+              $('.chat').removeClass('active-chat');
+              $('.left .person').removeClass('active');
+
+              if (params.tabId) {
+                var displayName = params.isGroup ? mckGroupLayout.getGroupDisplayName(params.tabId) : _this.fetchContact(params.tabId).displayName;
+                $('.right .top .name').html(displayName);
+                $('.person[data-mck-id ="'+params.tabId+'"]').addClass('active');
+                $('.chat[data-mck-id ="'+params.tabId+'"]').addClass('active-chat');
+              }
+
                 if ($(".left .person.active").length) {
                     $mck_msg_inner = $(".mck-message-inner[data-mck-id='" + params.tabId + "']");
                 }
