@@ -1078,6 +1078,9 @@ var $applozic = jQuery.noConflict(true);
                         $applozic(this).hide();
                     }
                 });
+                $mck_msg_sbmt.click(function() {
+                    $mck_msg_form.submit();
+                });
                 $mck_msg_new.click(function () {
                   _this.initSearch();
                 });
@@ -1307,11 +1310,9 @@ var $applozic = jQuery.noConflict(true);
                 });
                 $mck_msg_inner = mckMessageLayout.getMckMessageInner();
                 $mck_msg_inner_left.bind('scroll', function () {
-                    console.log("$mck_msg_inner_left.find('.mck-contact-list').length: " + $mck_msg_inner_left.find('.mck-contact-list').length);
                     if ($mck_msg_inner_left.find('.mck-contact-list').length > 0) {
                         if ($mck_msg_inner_left.scrollTop() + $mck_msg_inner_left.innerHeight() >= $mck_msg_inner_left[0].scrollHeight) {
                             var startTime = $mck_msg_inner_left.data('datetime');
-                            console.log(startTime);
                             if (startTime > 0 && !CONTACT_SYNCING) {
                                 mckMessageService.loadMessageList({
                                     'tabId': "",

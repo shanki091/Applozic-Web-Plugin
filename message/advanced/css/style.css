@@ -184,6 +184,7 @@ body {
   float: left;
   width: 62.4%;
   height: 100%;
+  overflow: auto;
 }
 .container .right .top {
   width: 100%;
