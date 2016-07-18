@@ -184,7 +184,6 @@ body {
   float: left;
   width: 62.4%;
   height: 100%;
-  overflow: auto;
 }
 .container .right .top {
   width: 100%;
@@ -204,7 +203,6 @@ body {
 .container .right .chat {
   position: relative;
   display: none;
-  overflow: hidden;
   padding: 0 35px 92px;
   border-width: 1px 1px 1px 0;
   border-style: solid;
@@ -219,6 +217,8 @@ body {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
+  height: 92%;
+  overflow: auto;
 }
 .container .right .chat.active-chat {
   display: block;
