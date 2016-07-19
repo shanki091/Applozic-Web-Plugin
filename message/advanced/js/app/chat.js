@@ -3501,10 +3501,14 @@ var $applozic = jQuery.noConflict(true);
                 var latestCreatedAtTime = $applozic('#' + $listId + ' li:nth-child(1)').data('msg-time');
                 if (typeof latestCreatedAtTime === "undefined" || (message ? message.createdAtTime : "") > latestCreatedAtTime || ($listId.indexOf("search") !== -1 && prepend)) {
                     $applozic.tmpl("contactTemplate", contactList).prependTo('#' + $listId);
-                    $applozic.tmpl("conversationTemplate", contactList).prependTo('#conversation-section');
+                    if ($listId !== "mck-search-list") {
+                      $applozic.tmpl("conversationTemplate", contactList).prependTo('#conversation-section');
+                    }
                 } else {
                     $applozic.tmpl("contactTemplate", contactList).appendTo('#' + $listId);
-                    $applozic.tmpl("conversationTemplate", contactList).appendTo('#conversation-section');
+                    if ($listId !== "mck-search-list") {
+                      $applozic.tmpl("conversationTemplate", contactList).appendTo('#conversation-section');
+                    }
                 }
                 var $textMessage = $applozic("#li-" + contHtmlExpr + " .msgTextExpr");
                 (typeof emoji_template === 'object') ? $textMessage.append(emoji_template) : $textMessage.html(emoji_template);
