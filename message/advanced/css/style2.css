@@ -159,7 +159,7 @@ body {
 	line-height: 40px;
 }
 
-.container .left .people .person:after {
+.container .left .people .person:after, .container .left .people .person.active:after  {
 	position: absolute;
 	bottom: 0;
 	left: 15px;
@@ -198,7 +198,6 @@ body {
 	right: 5%;
 	padding: 0 0 5px 5px;
 	color: #999;
-	background-color: #fff;
 }
 
 .container .left .people .person .preview {
@@ -231,14 +230,9 @@ body {
 	{
 	padding-top: 13px;
 	border: 0;
-	background-color: #00b0ff;
+	background-color: #eceff1;
 }
 
-.container .left .people .person.active span, .container .left .people .person:hover span
-	{
-	color: #fff;
-	background: transparent;
-}
 
 .container .left .people .person.active:after, .container .left .people .person:hover:after
 	{
@@ -580,330 +574,43 @@ body {
 	right: 0;
 }
 
-@
-keyframes slideFromLeft { 0% {
-	margin-left: -200px;
-	opacity: 0;
+@keyframes slideFromLeft {
+  0% {
+    margin-left: -200px;
+    opacity: 0;
+  }
+  100% {
+    margin-left: 0;
+    opacity: 1;
+  }
 }
-
-100%
-{
-margin-left
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-0;
-opacity
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-1;
+@-webkit-keyframes slideFromLeft {
+  0% {
+    margin-left: -200px;
+    opacity: 0;
+  }
+  100% {
+    margin-left: 0;
+    opacity: 1;
+  }
 }
+@keyframes slideFromRight {
+  0% {
+    margin-right: -200px;
+    opacity: 0;
+  }
+  100% {
+    margin-right: 0;
+    opacity: 1;
+  }
 }
-@
--webkit-keyframes slideFromLeft { 0% {
-	margin-left: -200px;
-	opacity: 0;
-}
-
-100%
-{
-margin-left
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-0;
-opacity
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-1;
-}
-}
-@
-keyframes slideFromRight { 0% {
-	margin-right: -200px;
-	opacity: 0;
-}
-
-100%
-{
-margin-right
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-0;
-opacity
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-1;
-}
-}
-@
--webkit-keyframes slideFromRight { 0% {
-	margin-right: -200px;
-	opacity: 0;
-}
-100%
-{
-margin-right
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-0;
-opacity
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-1;
-}
+@-webkit-keyframes slideFromRight {
+  0% {
+    margin-right: -200px;
+    opacity: 0;
+  }
+  100% {
+    margin-right: 0;
+    opacity: 1;
+  }
 }
