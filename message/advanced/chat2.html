@@ -71,9 +71,8 @@
 								<div id="mck-tab-menu" class="mck-menu-item">
 									<div class="mck-dropdown-toggle" data-toggle="mckdropdown"
 										aria-expanded="true">
-										<img
-											src="css/app/images/icon-menu.png"
-											class="mck-menu-icon" alt="Tab Menu">
+										<img src="css/app/images/icon-menu.png" class="mck-menu-icon"
+											alt="Tab Menu">
 									</div>
 									<ul id="mck-tab-menu-list"
 										class="mck-dropdown-menu mck-tab-menu-box menu-right"
@@ -108,9 +107,10 @@
 								<div id="mck-msg-loading" class="mck-loading n-vis">
 									<span class="mck-icon-loading"></span>
 								</div>
-							<div id="mck-no-more-messages" class="mck-no-more-messages mck-show-more-icon n-vis">
-								<h3>No more messages!</h3>
-							</div>
+								<div id="mck-no-more-messages"
+									class="mck-no-more-messages mck-show-more-icon n-vis">
+									<h3>No more messages!</h3>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -118,7 +118,7 @@
 					<div class="write">
 						<!-- Create message send form -->
 
-<!-- 						<div id="mck-file-menu" class="mck-file-menu">
+						<!-- 						<div id="mck-file-menu" class="mck-file-menu">
 							<div class="mck-row">
 								<div class="blk-lg-6 mck-left mck-pt10">
 									<a id="mck-file-up" class="mck-btn-text-panel mck-file-upload"
@@ -181,11 +181,9 @@
 
 											</ul>
 										</div>
-										<a href="#"
-											id="mck-file-up2" type="button"
+										<a href="#" id="mck-file-up2" type="button"
 											class="write-link attach n-vis mck-file-upload mck-btn-text-panel"
-											title="Attach File"> </a>
-											 <span id="mck-text-box"
+											title="Attach File"> </a> <span id="mck-text-box"
 											contenteditable="true" class="mck-text-box mck-text required"></span>
 
 										<a href="#" type="button" id="mck-btn-smiley"
@@ -212,39 +210,51 @@
 			</div>
 		</div>
 	</div>
-	<div id="mck-loc-box" class="mck-box mck-loc-box fade" aria-hidden="false">
-    <div class="mck-box-dialog mck-box-md">
-        <div class="mck-box-content">
-            <div class="mck-box-top mck-row">
-                <div class="blk-lg-10">
-                    <h4 class="mck-box-title">Location Sharing</h4>
-                </div>
-                <div class="blk-lg-2">
-                    <button type="button" class="mck-box-close" data-dismiss="mckbox" aria-label="Close"><span aria-hidden="true">×</span></button>
-                </div>
-            </div>
-            <div class="mck-box-body">
-                <div class="mck-form-group">
-                    <div class="blk-lg-12">
-                        <input id="mck-loc-address" type="text" class="mck-form-control" placeholder="Enter a location" autocomplete="off">
-                    </div>
-                </div>
-                <div id="mck-map-content" class="mck-loc-content"></div>                
-                <div class="n-vis">
-                    <label class="blk-sm-2 mck-control-label">Lat.:</label>
-                    <div class="blk-sm-3"><input type="text" id="mck-loc-lat" class="mck-form-control"></div>
-                    <label class="blk-sm-2 mck-control-label">Long.:</label>
-                    <div class="blk-sm-3"><input type="text" id="mck-loc-lon" class="mck-form-control"></div>
-                </div>
-            </div>
-            <div class="mck-box-footer">
-                <button id="mck-my-loc" type="button" class="mck-my-loc mck-btn mck-btn-green" >My Location</button>
-                <button id="mck-loc-submit" type="button" class="mck-btn mck-btn-blue mck-loc-submit move-right">Send</button>
-                <button type="button" class="mck-btn mck-btn-default move-right" data-dismiss="mckbox">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
+	<div id="mck-loc-box" class="mck-box mck-loc-box fade"
+		aria-hidden="false">
+		<div class="mck-box-dialog mck-box-md">
+			<div class="mck-box-content">
+				<div class="mck-box-top mck-row">
+					<div class="blk-lg-10">
+						<h4 class="mck-box-title">Location Sharing</h4>
+					</div>
+					<div class="blk-lg-2">
+						<button type="button" class="mck-box-close" data-dismiss="mckbox"
+							aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+				</div>
+				<div class="mck-box-body">
+					<div class="mck-form-group">
+						<div class="blk-lg-12">
+							<input id="mck-loc-address" type="text" class="mck-form-control"
+								placeholder="Enter a location" autocomplete="off">
+						</div>
+					</div>
+					<div id="mck-map-content" class="mck-loc-content"></div>
+					<div class="n-vis">
+						<label class="blk-sm-2 mck-control-label">Lat.:</label>
+						<div class="blk-sm-3">
+							<input type="text" id="mck-loc-lat" class="mck-form-control">
+						</div>
+						<label class="blk-sm-2 mck-control-label">Long.:</label>
+						<div class="blk-sm-3">
+							<input type="text" id="mck-loc-lon" class="mck-form-control">
+						</div>
+					</div>
+				</div>
+				<div class="mck-box-footer">
+					<button id="mck-my-loc" type="button"
+						class="mck-my-loc mck-btn mck-btn-green">My Location</button>
+					<button id="mck-loc-submit" type="button"
+						class="mck-btn mck-btn-blue mck-loc-submit move-right">Send</button>
+					<button type="button" class="mck-btn mck-btn-default move-right"
+						data-dismiss="mckbox">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- Dummy div as js is dependent on mck-sidebox -->
 	<div id="mck-sidebox"></div>
