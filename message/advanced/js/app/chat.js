@@ -1644,6 +1644,9 @@ var $applozic = jQuery.noConflict(true);
                                     $mck_msg_inner.html('<div class="mck-no-data-text mck-text-muted">No messages yet!</div>');
                                     $mck_tab_message_option.removeClass('vis').addClass('n-vis');
                                 }
+                                var contact = (isGroup) ? mckGroupLayout.getGroup(tabId) : mckMessageLayout.getContact(tabId);
+                                var contHtmlExpr = (contact.isGroup) ? 'group-' + contact.htmlId : 'user-' + contact.htmlId;
+                                $applozic("#li-" + contHtmlExpr + " .mck-cont-msg-wrapper").html('');
                                 mckStorage.clearMckMessageArray();
                             }, error: function() {}
                     });
@@ -2429,6 +2432,7 @@ var $applozic = jQuery.noConflict(true);
                 $mck_msg_response.removeClass('vis').addClass('n-vis');
                 $mck_msg_form[0].reset();
                 $mck_msg_form.removeClass('n-vis').addClass('vis');
+                $applozic("#mck-write-box").removeClass('n-vis').addClass('vis');
                 $mck_msg_inner.html("");
                 $mck_msg_error.removeClass('mck-no-mb');
                 $mck_contacts_content.removeClass('n-vis').addClass('vis');
@@ -2508,7 +2512,7 @@ var $applozic = jQuery.noConflict(true);
                     if (IS_MCK_USER_DEACTIVATED) {
                         $mck_msg_error.html("Deactivated");
                         $mck_msg_error.removeClass('n-vis').addClass('vis').addClass('mck-no-mb');
-                        $mck_msg_form.removeClass('vis').addClass('n-vis');
+                        $applozic("#mck-write-box").removeClass('vis').addClass('n-vis');
                     }
                     mckInitializeChannel.subscibeToTypingChannel(params.tabId, params.isGroup);
                     var contact = (params.isGroup) ? mckGroupLayout.getGroup(params.tabId) : mckMessageLayout.getContact(params.tabId);
@@ -2608,7 +2612,7 @@ var $applozic = jQuery.noConflict(true);
                 }
                 $mck_msg_error.html(text);
                 $mck_msg_error.removeClass('n-vis').addClass('vis').addClass('mck-no-mb');
-                $mck_msg_form.removeClass('vis').addClass('n-vis');
+                $applozic("#mck-write-box").removeClass('vis').addClass('n-vis');
             };
             _this.addTooltip = function(msgKey) {
                 $applozic("." + msgKey + " .mck-icon-time").attr('title', 'pending');
@@ -3505,7 +3509,7 @@ var $applozic = jQuery.noConflict(true);
                 var tabId = $mck_msg_inner.data('mck-id');
                 var isGroupTab = $mck_msg_inner.data('isgroup');
                 var contact = (message.groupId) ? mckGroupLayout.getGroup(message.groupId) : mckMessageLayout.getContact(message.to);
-                (message.groupId) ? mckContactLayout.addGroupFromMessage(message, true) : mckMessageLayout.addContactsFromMessage(message, true);
+                (message.groupId) ? mckMessageLayout.addGroupFromMessage(message, true) : mckMessageLayout.addContactsFromMessage(message, true);
                 if (typeof tabId !== 'undefined' && tabId === contact.contactId && isGroupTab === contact.isGroup) {
                     if (messageType === "APPLOZIC_01" || messageType === "MESSAGE_RECEIVED") {
                         if (typeof contact !== 'undefined') {
@@ -3704,7 +3708,7 @@ var $applozic = jQuery.noConflict(true);
                 if (isBlocked) {
                     $mck_msg_error.html('You have blocked this user.');
                     $mck_msg_error.removeClass('n-vis').addClass('vis').addClass('mck-no-mb');
-                    $mck_msg_form.removeClass('vis').addClass('n-vis');
+                    $applozic("#mck-write-box").removeClass('vis').addClass('n-vis');
                     $mck_tab_title.removeClass('mck-tab-title-w-status');
                     $mck_tab_status.removeClass('vis').addClass('n-vis');
                     $mck_typing_box.removeClass('vis').addClass('n-vis');
@@ -3713,7 +3717,7 @@ var $applozic = jQuery.noConflict(true);
                 } else {
                     $mck_msg_error.html('');
                     $mck_msg_error.removeClass('vis').addClass('n-vis').removeClass('mck-no-mb');
-                    $mck_msg_form.removeClass('n-vis').addClass('vis');
+                    $applozic("#mck-write-box").removeClass('n-vis').addClass('vis');
                     $mck_message_inner.data('blocked', false);
                     $mck_block_button.html('Block User');
                     if (!MCK_BLOCKED_BY_MAP[tabId] && (w.MCK_OL_MAP[tabId] || MCK_LAST_SEEN_AT_MAP[tabId])) {
@@ -4374,7 +4378,7 @@ var $applozic = jQuery.noConflict(true);
             _this.disableGroupTab = function() {
                 $mck_msg_error.html('You are no longer part of this group.');
                 $mck_msg_error.removeClass('n-vis').addClass('vis').addClass('mck-no-mb');
-                $mck_msg_form.removeClass('vis').addClass('n-vis');
+                $applozic("#mck-write-box").removeClass('vis').addClass('n-vis');
             };
             _this.isGroupLeft = function(group) {
                 var isGroupLeft = false;
@@ -4388,18 +4392,18 @@ var $applozic = jQuery.noConflict(true);
                 return isGroupLeft;
             };
             _this.onGroupLeft = function(groupId) {
+                $mck_msg_inner = mckMessageLayout.getMckMessageInner();
                 if ($mck_group_info_tab.hasClass('vis')) {
                     var currGroupId = $mck_group_info_tab.data('mck-id');
                     if (groupId === currGroupId) {
                         $mck_group_back_link.trigger('click');
                     }
-                } else if ($mck_sidebox_content.hasClass('vis')) {
-                    var currTabId = $mck_msg_inner.data('mck-id');
-                    var isGroupTab = $mck_msg_inner.data('isgroup');
-                    if (currTabId === groupId.toString() && isGroupTab) {
-                        $mck_group_menu_options.removeClass('vis').addClass('n-vis');
-                        _this.disableGroupTab();
-                    }
+                }
+                var currTabId = $mck_msg_inner.data('mck-id');
+                var isGroupTab = $mck_msg_inner.data('isgroup');
+                if (currTabId === groupId.toString() && isGroupTab) {
+                    $mck_group_menu_options.removeClass('vis').addClass('n-vis');
+                    _this.disableGroupTab();
                 }
             };
             _this.onAddedGroupMember = function(groupId, userId) {
