@@ -1576,16 +1576,6 @@ a:hover {
 	padding: 0;
 }
 
-/*
-.mck-alpha-contact-image {
-    text-align: center;
-    height: 50px;
-    max-width: 50px;
-    line-height: 50px;
-    font-size: 30px;
-    position: relative;
-}
-*/
 .mck-contact-list .mck-alpha-contact-image {
 	border-radius: 110px;
 }
@@ -1593,6 +1583,9 @@ a:hover {
 .mck-alpha-contact-image .mck-contact-icon {
 	font-weight: bold;
 	vertical-align: middle;
+	    height: 40px;
+    line-height: 40px;
+    display: block;
 }
 
 .alpha_D .mck-contact-icon {

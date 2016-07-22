@@ -16,15 +16,6 @@ body {
 	background-size: cover;
 	background-repeat: none;
 }
-
-/* .wrapper {
-  position: relative;
-  left: 50%;
-  width: 1000px;
-  height: 800px;
-  -webkit-transform: translate(-50%, 0);
-          transform: translate(-50%, 0);
-} */
 .container {
 	position: fixed !important;
 	background-color: #fff;
@@ -66,23 +57,11 @@ body {
 
 .container .left .top {
 	width: 100%;
-	height: 99px;
-	padding: 30px 15px;
-	min-height: 99px;
+	height: 89px;
+	padding: 25px 15px;
+	min-height: 89px;
 	text-align: left;
-}
-
-.container .left .top:after {
-	position: relative;
-	top: 70px;
-	left: 0;
-	display: block;
-	width: 270px;
-	height: 1px;
-	content: '';
-	z-index: 100;
-	margin-top: -2px;
-	background-color: #e6e6e6;
+	border-bottom: 1px solid #F3F3F3 !important;
 }
 
 .container .left input {
@@ -145,6 +124,7 @@ body {
 	padding: 12px 15px;
 	cursor: pointer;
 	background-color: #fff;
+	    border-bottom: 1px solid #F3F3F3 !important;
 }
 
 .mck-alpha-contact-image {
@@ -157,17 +137,6 @@ body {
 	font-size: 25px;
 	text-align: center;
 	line-height: 40px;
-}
-
-.container .left .people .person:after, .container .left .people .person.active:after  {
-	position: absolute;
-	bottom: 0;
-	left: 15px;
-	display: block;
-	width: 250px;
-	height: 1px;
-	content: '';
-	background-color: #e6e6e6;
 }
 
 .container .left .people .person img {
