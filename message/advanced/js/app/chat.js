@@ -1606,6 +1606,7 @@ var $applozic = jQuery.noConflict(true);
             _this.deleteMessage = function(msgKey) {
                 $mck_msg_inner = mckMessageLayout.getMckMessageInner();
                 var tabId = $mck_msg_inner.data('mck-id');
+                var isGroup = $mck_msg_inner.data("isgroup");
                 if (typeof tabId !== 'undefined') {
                     $applozic.ajax({
                             url: MCK_BASE_URL + MESSAGE_DELETE_URL + "?key=" + msgKey, type: 'get', success: function(data) {
@@ -1615,6 +1616,15 @@ var $applozic = jQuery.noConflict(true);
                                         $applozic("." + msgKey).remove();
                                         if ($mck_msg_inner.is(":empty")) {
                                             $mck_tab_message_option.removeClass('vis').addClass('n-vis');
+                                        }
+                                        var $latestMessageDiv = $mck_msg_inner.children("div[name='message']:last");
+                                        if ($latestMessageDiv.length > 0) {
+                                            mckMessageService.updateContactList(tabId, isGroup);
+                                        } else {
+                                            var contact = (isGroup) ? mckGroupLayout.getGroup(tabId) : mckMessageLayout.getContact(tabId);
+                                            var contHtmlExpr = (contact.isGroup) ? 'group-' + contact.htmlId : 'user-' + contact.htmlId;
+                                            $applozic("#li-" + contHtmlExpr + " .mck-cont-msg-wrapper").html('');
+                                            $applozic("#li-" + contHtmlExpr + " .time").html('');
                                         }
                                     }
                                     mckStorage.clearMckMessageArray();
@@ -1647,6 +1657,7 @@ var $applozic = jQuery.noConflict(true);
                                 var contact = (isGroup) ? mckGroupLayout.getGroup(tabId) : mckMessageLayout.getContact(tabId);
                                 var contHtmlExpr = (contact.isGroup) ? 'group-' + contact.htmlId : 'user-' + contact.htmlId;
                                 $applozic("#li-" + contHtmlExpr + " .mck-cont-msg-wrapper").html('');
+                                $applozic("#li-" + contHtmlExpr + " .time").html('');
                                 mckStorage.clearMckMessageArray();
                             }, error: function() {}
                     });
@@ -3001,7 +3012,7 @@ var $applozic = jQuery.noConflict(true);
                 if ($applozic("#" + $listId + " #li-" + contactHtmlExpr).length > 0) {
                     var $mck_msg_part = $applozic("#" + $listId + " #li-" + contact.htmlId + " .mck-cont-msg-wrapper");
                     if (($mck_msg_part.is(":empty") || update) && message !== undefined) {
-                        _this.updateContact(contact, message, $listId);
+                        _this.updateContact(contact, message, $listId, update);
                     }
                 } else {
                     _this.addContact(contact, $listId, message);
@@ -3107,11 +3118,11 @@ var $applozic = jQuery.noConflict(true);
                 var contactHtmlExpr = (contact.isGroup) ? 'group-' + contact.htmlId : 'user-' + contact.htmlId;
                 $applozic("#li-" + contactHtmlExpr).remove();
             };
-            _this.updateContact = function(contact, message, $listId) {
+            _this.updateContact = function(contact, message, $listId, update) {
                 var contHtmlExpr = (contact.isGroup) ? 'group-' + contact.htmlId : 'user-' + contact.htmlId;
                 var $contactElem = $applozic("#li-" + contHtmlExpr);
                 var currentMessageTime = $contactElem.data('msg-time');
-                if (message && message.createdAtTime > currentMessageTime) {
+                if (message && message.createdAtTime > currentMessageTime || update) {
                     var ucTabId = (message.groupId) ? 'group_' + contact.contactId : 'user_' + contact.contactId;
                     var unreadCount = _this.getUnreadCount(ucTabId);
                     var emoji_template = _this.getMessageTextForContactPreview(message, contact, 15);
@@ -3307,20 +3318,22 @@ var $applozic = jQuery.noConflict(true);
                 }
             };
             _this.removeConversationThread = function(tabId, isGroup) {
+                $mck_msg_inner = mckMessageLayout.getMckMessageInner();
                 mckStorage.clearMckMessageArray();
                 var contact = (isGroup) ? mckGroupLayout.getGroup(tabId) : mckMessageLayout.getContact(tabId);
                 var currentTabId = $mck_msg_inner.data('mck-id');
-                if (typeof currentTabId === 'undefined' || currentTabId === '') {
-                    var htmlId = (typeof contact !== 'undefined') ? contact.htmlId : mckContactUtils.formatContactId(tabId);
-                    var contactIdExpr = (isGroup) ? 'group-' + htmlId : 'user-' + htmlId;
-                    $applozic("#li-" + contactIdExpr).remove();
-                } else if (currentTabId === tabId) {
+                var htmlId = (typeof contact !== 'undefined') ? contact.htmlId : mckContactUtils.formatContactId(tabId);
+                var contactIdExpr = (isGroup) ? 'group-' + htmlId : 'user-' + htmlId;
+                $applozic("#li-" + contHtmlExpr + " .mck-cont-msg-wrapper").html('');
+                $applozic("#li-" + contHtmlExpr + " .time").html('');
+                if (currentTabId === tabId) {
                     $mck_msg_inner.html("");
                     $mck_msg_cell.removeClass('n-vis').addClass('vis');
                     $mck_tab_message_option.removeClass('vis').addClass('n-vis');
                 }
             };
             _this.removedDeletedMessage = function(key, tabId, isGroup) {
+                $mck_msg_inner = mckMessageLayout.getMckMessageInner();
                 mckStorage.clearMckMessageArray();
                 var $divMessage = $applozic("." + key);
                 if ($divMessage.length > 0) {
@@ -3329,11 +3342,9 @@ var $applozic = jQuery.noConflict(true);
                         $mck_msg_cell.removeClass('n-vis').addClass('vis');
                         $mck_tab_message_option.removeClass('vis').addClass('n-vis');
                     }
-                } else if (typeof tabId !== "undefined") {
-                    var mckContactListLength = $applozic("#mck-contact-list").length;
-                    if (mckContactListLength > 0) {
-                        mckMessageService.updateContactList(tabId, isGroup);
-                    }
+                }
+                if (typeof tabId !== "undefined") {
+                    mckMessageService.updateContactList(tabId, isGroup);
                 }
             };
             _this.getMessageTextForContactPreview = function(message, contact, size) {
